@@ -1,0 +1,103 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# basic operators
+
+#!markdown
+
+**terms**
+ - operand: the item in which an operator applies to: such as 5 * 2 (the values 5 and 2 are the operands)
+ - an operator is ***unary*** if it has a single operand
+ - an operator is ***binary*** if it has multiple operands
+
+#!markdown
+
+**Operators**
+ - Addition **(+)**: Used to find the "sum of"
+ - Subtraction ***(-)***: Used to find the "differance"
+ - Multiplication ***(*)***: used to find the "product of"
+ - Division ***(/)***: used to find the "quotient"
+ - Remainder ***(%)***: used to find the remainder, which is done by first dividing the operands and then finding the remainder
+ - Exponent ***(**)***: used to calulate operandA, to the power of operandB
+ - **+=** - used to add to the current value
+ - **-=** - used to subtract from the current value
+ - ***=** - used to multiply the current value
+
+#!markdown
+
+**string concatenation**
+ - used to "join" strings together by using the + operator
+
+#!javascript
+
+let strOne = "this is an";
+let strTwo = " example of concatenation";
+alert(strOne + strTwo);
+
+#!markdown
+
+ - if you try to concatenate a string and an integer, the results will add the string to it as below:
+
+#!javascript
+
+let num = 1;
+let otherNum = 10;
+let str = "5";
+alert(num + otherNum + str); //this will output 115, and NOT 16
+
+#!markdown
+
+**unary +**
+ - when the + operator can be used to convert other types into to a number
+ - This does the same thing as casting to a number: Number(...);
+
+#!javascript
+
+// No effect on numbers
+let x = 1;
+alert( +x ); // 1
+
+let y = -2;
+alert( +y ); // -2
+
+// Converts non-numbers
+alert( +true ); // 1
+alert( +"" );   // 0
+
+#!markdown
+
+**operator precedence**
+ - same as when performing algebraic equations, operators have an order of precedence ( think BIDMAS)
+ - the order can be found here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+#!markdown
+
+**assignment (=)**
+ - used to assign values to variable
+ - has a very low precedence (calculations are done first, then assigned)
+ - can be chained: E.G. a = b = c = 2 + 2;
+ - chained assignments are evalualted from right to left so here a, b and c will equal 4
+
+#!markdown
+
+**increment and decrement**
+ - **name++**: used to increase the value by 1 ***after*** it is returned
+ - **name--**: used to decrease the value by 1 ***after*** it is returned
+ - **++name**: used to increase the value by 1 ***before*** it is returned
+ - **--name**: used to decrease the value by 1 ***before*** it is returned
+
+  
+
+#!markdown
+
+**bitwise operators**
+ - Bitwise AND:	***a & b***	Returns a one in each bit position for which the corresponding bits of both operands are ones.
+ - Bitwise OR:	***a | b***	Returns a zero in each bit position for which the corresponding bits of both operands are zeros.
+ - Bitwise XOR:	***a ^ b***	Returns a zero in each bit position for which the corresponding bits are the same. [Returns a one in each bit position for which the corresponding bits are different.]
+ - Bitwise NOT:	***~*** a	Inverts the bits of its operand.
+ - Left shift:	***a << b***	Shifts a in binary representation b bits to the left, shifting in zeros from the right.
+ - Sign-propagating right shift	***a >> b***	Shifts a in binary representation b bits to the right, discarding bits shifted off.
+ - Zero-fill right shift: a ***>>> b***	Shifts a in binary representation b bits to the right, discarding bits shifted off, and shifting in zeros from the left.

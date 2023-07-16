@@ -1,0 +1,43 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Comparision operators
+
+#!markdown
+
+**Logical Comparision**
+ - Logical comparison is the process of comparing 2 values of the same type (not string)
+
+#!javascript
+
+let a = 4;
+let b = 7;
+
+alert(a == b); //equality comparison
+alert(a != b); //not equal to
+alert(a < b); //less than
+alert(a < b); //greater than
+alert(a <= b); //less than or equal to
+alert(a >= b); //greater than or equal to
+
+#!markdown
+
+**String Comparison**
+ - To check whether a string is greater than another, JS uses the so called "dictionary" or "lexicographical" order
+ - This means that it will compare each char in each string, working its way across to determine the result
+ - case doesn't matter in strings when compared
+
+#!javascript
+
+alert('Z' < 'A'); //as A is at the start, this will return true
+alert('Glow' < 'Glee'); //as o is less than e, this will return true
+
+#!markdown
+
+**Comparisons of differant types**
+ - When comparing 2 differant datatypes, the types are converted into numbers
+ - When comparing equality, JS cannot differentiate between 0 and false
+ - to work around this, you must use === to use strict equality (which returns false if the types are differant)

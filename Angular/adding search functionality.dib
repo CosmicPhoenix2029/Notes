@@ -1,0 +1,83 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Adding search functionality to an app
+
+ - this will enable the user to search through the data provided by the apps service and display only the results that match the provided term
+ - this is acheived in 3 steps:
+ - here the desired component is the one you are adding the search functionality to
+ - **1: Update the desired component to store data in an array**
+ - **2: Update the desired components template to add the search markup**
+ - **3: Implement the onclick event handler function**
+
+#!markdown
+
+**1: Update the desired component to store data in an array**
+ - within the desired components class definition, add a new property which initializes to an empty array of the object you are returning
+ - within the desired components constructor, set the value of the new property to the returned data of a services function which filters the data (add more to the services class as required)
+
+#!javascript
+
+export class HomeComponent {
+    readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
+  
+    //initialize location list to an empty array of HousingLocations
+    housingLocationList: HousingLocation[]= [];
+    //create an empty array of filtered homes (when the page loads it will contain all of them)
+    filteredLocationList: HousingLocation[] = [];
+  
+    //inject the Housing Service into a property
+    housingService: HousingService = inject(HousingService);
+  
+      //we then need to populate the empty array via a constructor which invokes a function within the service
+    constructor() {
+      this.housingLocationList = this.housingService.getAllHousingLocations();
+  
+      //this filteredLocationList will be used by another function made in step 3, to filter the results 
+      this.filteredLocationList = this.housingLocationList;
+    }
+  }
+
+#!markdown
+
+**2. Update the desired components template to add the search markup**
+ - here we use an input element and declare a template variable within it
+ - we attach an event handler on the search button **(click)** which calls the filterResults function (defined in step 3)
+ - we then make use of **ngFor** to display the search results in the app-housing-location component
+
+#!javascript
+
+//search button markup
+<form>
+<input type="text" placeholder="Filter by city" #filter>
+<button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+</form>
+</section>
+<section class="results">
+<app-housing-location
+*ngFor="let housingLocation of filteredLocationList"
+[housingLocation]="housingLocation">
+</app-housing-location>
+</section>
+
+#!markdown
+
+**3.Implement the onClick filterResults function**
+ - within the same components class, define the function which will  perform the filtering on the filteredValues array which contains all of the values at this point
+ - the function will set the array to all if the input is not valid
+ -if the input is valid, then filter the results using the specified filter (from the specified parameter)
+
+#!javascript
+
+filterResults(text: string) {
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList;
+    }
+  
+    this.filteredLocationList = this.housingLocationList.filter(
+      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+    );
+  }

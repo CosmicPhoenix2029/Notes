@@ -1,0 +1,29 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# The order of precedence in CSS
+
+#!markdown
+
+**specifity**
+ - a CSS declaration that is more specific will take precedence over those which are more broad in scope
+ - specifity will only matter when an element has multiple confliting rules applying to it
+ - ID selectors are the most specific
+ - class selectors are next
+ - type selectors are the broadest selector
+
+#!markdown
+
+**inheritance**
+ - inheritance refers to certain CSS properties that when applied to an element are inherited by that elements child elements (like a p in a div)
+ - typography based properties such as font, size, weight and alignment are usually inherited, while most other properties are not.
+ - in order to work with this feature, you must "override" the inherited values via its own selector.
+ - eg. if a div selector defines the colour as blue, you would define a p selector with a differant colour
+
+#!markdown
+
+**rule order**
+ - if after specifity and inheritance has been accounted for and there is still a conflict, the rule defined last will apply. This refers to the rule closest to the end of the file.

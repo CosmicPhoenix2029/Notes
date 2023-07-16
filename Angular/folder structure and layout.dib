@@ -1,0 +1,38 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Project folder structure/layout
+
+#!markdown
+
+**src**
+ - ***index.html***: is the apps top level HTML template
+ - ***style.css***: is the apps top level css style sheet
+ - ***main.ts***: is where the app starts running
+ - ***favicon.ico***: is the apps icon
+
+#!markdown
+
+**/app**
+ - This is where the angular app component files are stored
+ - ***app.component.ts***: this is the source file that describes the ***app-root*** component, this is the top level component in the app
+ - ***app.component.css***: is the stylesheet for this component
+ - new components are added to this directory
+
+#!markdown
+
+**/assets**
+ - this is where the apps images are stored
+
+#!markdown
+
+**other files**
+- ***.angular*** has files that are required to build the app
+- ***.e2e*** has files used for end to end testing
+- ***.node_modules*** has the node.js packages that the app uses
+- ***angular.json*** describes the angular app to the app building tools
+- ***package.json*** is used by npm to run the built app
+- ***tsconfig files*** are the files that describes the apps configuration to the typescript compiler

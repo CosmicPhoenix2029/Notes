@@ -1,0 +1,90 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Datatypes
+
+#!markdown
+
+While variables are not bound to any type on declaration, every variable is of a specific type (calculated at compile-time)
+
+#!markdown
+
+**Number**
+ - represents both integers and floating-point numbers
+ - Can also stored the values of "infinity", "-infinity" and "NaN" (Not a number)
+ - can safely store values between 9,007,199,254,740,991 and -9,007,199,254,740,991
+
+#!javascript
+
+let number = 5;
+number = 12.543;
+
+#!markdown
+
+**BigInt**
+ - used to store values greater than 9,007,199,254,740,991 or kess than -9,007,199,254,740,991
+ - created by appending the character 'n' to the end of a number
+
+#!javascript
+
+let bigNumber = 9007199254740991n;
+
+#!markdown
+
+**String**
+ - used to store text
+ - initialised using "", or ''
+ - To create an interpolated string use backticks around the string
+
+#!javascript
+
+let basicString = "example";
+let interpolatedString = `This is an ${basicString} of an interpolated string.`
+alert(interpolatedString);
+
+#!markdown
+
+**Boolean**
+ - used to store either a value of ***true*** or ***false*** (generally used in comparisons or logical expressions)
+ - initialized using name = true;
+
+#!javascript
+
+let isValid = true;
+
+#!markdown
+
+**null**
+ - used to represent "nothing" (it's not the same as c# where null is a reference type with no reference)
+ - useful for checking if a variable is empty
+
+#!javascript
+
+let nothing = null;
+
+#!markdown
+
+**undefined**
+ - used when a variable is declared, but not initialized
+ - while it is possible to assign a variable as "undefined" its not recommended (null is recommended for this purpose)
+
+#!javascript
+
+let notPopulated;
+alert(notPopulated); //outputs "undefined"
+
+#!markdown
+
+**objects and symbols**
+ - objects are used to store ***collections*** of data, and more complex entities
+ - functions are stored as type object in JS
+ 
+
+#!markdown
+
+**The ***TypeOf*** operator**
+ - used like name.getType()
+ - used to get the datatype of a variable

@@ -1,0 +1,15 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"languageName":"csharp","name":"csharp"}]}}
+
+#!markdown
+
+# Elements and Tags
+
+#!markdown
+
+**syntax**
+ - Almost all elements start with an opening tags, and are followed by some tag content, and then a closing tag
+ - Opening tags instruct the browser on where an element starts, while a closing tag instructs the end of an element
+ -  The full list of HTML elements can be found here: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+ 

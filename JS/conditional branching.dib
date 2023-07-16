@@ -1,0 +1,72 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# conditional branching (if, else ?)
+
+#!markdown
+
+**if, elseif and else**
+ - used to evaluate a condition and execute the contained code block if the comparison returns true
+ - you can also make use of predetermined conditions
+ - else if will execute when the if condition, or other else if conditions located above it return false
+ - The else statement will execute when the if and all other else if's conditions returns false
+
+#!javascript
+
+let a = 4;
+let b = 10;
+let result = (a == b);
+if(a == b){
+    alert(`${a} is equal to ${b}!`);
+}
+
+if(result){
+    alert(`${a} is equal to ${b}!`);  
+}
+else if(a < b){
+    alert(`${a} is greater than ${b}`);
+}
+else{
+    alert(`${a} is NOT equal to ${b}!`);
+}
+
+#!markdown
+
+**The ? operator**
+ - This is known as the ternary operator 
+ - used to reduce the amount of boilerplate code and make it easier to read
+
+#!javascript
+
+//instead of:
+let accessAllowed;
+let age = prompt('How old are you?', '');
+
+if (age > 18) {
+  accessAllowed = true;
+} else {
+  accessAllowed = false;
+}
+
+alert(accessAllowed);
+
+//use ?
+let accessAllowed = (age > 18) ? true : false;
+
+#!markdown
+
+ - you can also chain the ? operator to perform else if conditions: (although its not recommended due to readability)
+
+#!javascript
+
+let age = prompt('age?', 18);
+
+let message = (age < 3) ? 'Hi, baby!' :
+  (age < 18) ? 'Hello!' :
+  (age < 100) ? 'Greetings!' :
+  'What an unusual age!';
+
+alert( message );

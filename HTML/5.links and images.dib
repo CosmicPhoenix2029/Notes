@@ -1,0 +1,47 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Links and Images
+
+#!markdown
+
+**Links**
+- to create a hyperlink, use the anchor tag (a) 
+- use the href attribute to define the URL
+- to open a link in a new tab, use the target attribute and sets its value to _blank
+- When opening links in a new tab, its very important to also use a rel tag to prevent the new tab from accessing resources from the old tab
+- this is achieved by setting the rel values to "noopener noreferrer" (this means resources cannot be shared to or from the tabs)
+
+#!html
+
+<a href="https://exampleurl.com">sametab</a>
+<a href="https://exampleurl.com" target="_blank" rel="noopener noreferrer">newtab</a>
+
+#!markdown
+
+**Absoulte and relative**
+ - absolute links are those which point to other pages on the internet, and look like https://exampleurl.com
+ - relative links are thise which point to a page in the same directory and look like about.html
+ - with relative links, you are essentailly pointing the url to the filepath of the pages file
+ - to go up a directory use ./foldername/example (the .\ can be chained)
+ - to go into a directory simply use foldername/example.html 
+
+#!html
+
+<a href="https://absoluteurl.com">Absolute</a>
+<a href="relative.html">relative</a>
+
+#!markdown
+
+**images**
+ - to insert an image, use the img tag, with the src attribute
+ - the img tag is self closing 
+ - absolute and relative are also possible with images
+ - the alt attribute is used to provide textual content to describe the image 
+
+#!html
+
+<img src="exampleimage.jpg" alt="an Example image"/>

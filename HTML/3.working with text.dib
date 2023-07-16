@@ -1,0 +1,57 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Working with text
+
+#!markdown
+
+**comments**
+- to add comments to a html file, use the syntax below:
+- in VScode you can also press ctrl + /
+
+#!html
+
+<!--Example comment-->
+
+#!markdown
+
+**Creating paragraphs**
+ - paragraphs are wrapped using the p tag
+ - Used to contain blocks of text
+
+#!html
+
+<p>This is an example of a paragraph</p>
+
+#!markdown
+
+**Creating Headings**
+ - Headings have a range of tags going from h1 to h6, which decrease in size along the range
+ - It's important to use the correct level of headings on each page, for example there should really only be 1 H1 element, which is used to create the heading of the overall page
+
+#!html
+
+<h1>Large header example</h1>
+
+#!markdown
+
+**The strong element**
+ - used to make text bold
+ - mostly nested within other tags, such as P or a header
+
+#!html
+
+<p><strong>Bold text</strong></p>
+
+#!markdown
+
+**The em element**
+ - used to create italisized text
+ - generally nested within other elements
+
+#!html
+
+<p><em>italisized text</em></p>

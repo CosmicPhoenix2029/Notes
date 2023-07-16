@@ -1,0 +1,83 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Angular Forms
+
+ - forms in angular are used to collect user input, and then send it to the app's service
+ - usually the service would then contain a function to use REST API calls to php scripts however here it will log  the form to the console
+ - there are 3 steps to implement a form into an angular app:
+ - **1: writing a method within the service to send form data**
+ - **2: Adding the form functions to the desired component**
+ - **3: Adding the HTML markup to the desired components template**
+
+#!markdown
+
+**1: Writing a method within the service to send form data**
+ - open the services.ts file
+ - within the class definition, write a method to submit the form (here it's just logging the data to console)
+
+#!javascript
+
+//in housing.service.ts class definition:
+
+submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
+  }
+
+#!markdown
+
+**2: Adding the form functions to the desired component**
+ - the FormControl, FormGroup and ReactiveFormsModule items need to be imported from @angular/forms
+ - the ReactiveFormsModule needs to be added to the components imports array
+ - before the components constructor, the form must be defined as an FormGroup object
+ - after the components constructor, the form submission function must be defined (which then calls the service function to submit the form which is written above for reference)
+
+#!javascript
+
+//adding the imports
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
+//updating the imports array 
+imports: [CommonModule, ReactiveFormsModule],
+
+//defining the FormGroup object, located above the constructor
+applyForm = new FormGroup({
+  firstName: new FormControl(''),
+  lastName: new FormControl(''),
+  email: new FormControl('')
+});
+
+//writing a method to call the services form submission function, located below the constructor
+submitApplication(){
+    this.housingService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? ''    
+    );
+}
+
+#!markdown
+
+**3.Adding the forms markup in the desired components template**
+ - the submit button added contains an event handler on the form element 
+ - the event handler gives the formGroup object a name, and defines the submit action (calls the form submission method defined above)
+
+#!javascript
+
+<section class="listing-apply">
+      <h2 class="section-heading">Apply now to live here</h2>
+      //<form [formGroup]="applyForm" (submit)="submitApplication()"> //event handler is here
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text" formControlName="firstName">
+
+        <label for="last-name">Last Name</label>
+        <input id="last-name" type="text" formControlName="lastName">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+        //<button type="submit" class="primary">Apply now</button>
+      </form>
+    </section>

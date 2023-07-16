@@ -1,0 +1,25 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Creating an angular project
+
+#!markdown
+
+ **Installation**
+ - install Node.js (https://nodejs.org/en)
+ - in a terminal window, run "npm -v" (this gets the version of the nuget package manager thats installed, to check there is one installed)
+ - Install the Angular CLI: run "npm install -g @angular/cli"
+
+#!markdown
+
+**Project setup**
+ - open a terminal (CMD or Powershell)
+ - cd to the desired directory
+ - run Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+ -  run "ng new app-name"
+ - fill in the prompts that appear
+ - run cd app-name
+ - run ng serve --open (builds and opens the app)

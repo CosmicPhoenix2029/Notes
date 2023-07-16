@@ -1,0 +1,30 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Variables
+
+#!markdown
+
+JS is a weakly/dynamically typed language, meaning that when declaring variables, the type is dynamically calculated at compile time, instead of bieng defined by the programmer.
+
+**declaration**
+ - ***var***: used in older scripts
+ - ***let***: newer syntax to declare variables
+ - ***const***: used to declare variables which are immutable (once initialized, cannot be changed) - use VARIABLE_NAME syntax
+
+#!javascript
+
+let text = "this is some text";
+let number = 1;
+const MULTIPLICATION_FACTOR = 5;
+
+#!markdown
+
+**Naming**
+ - The name must contain only letters, digits or the symbols $ or _
+ - The first character must not be a digit
+ - The name must be written in camelCase
+ - The name cannot be a reserved keyword (let, class, return or function) 

@@ -1,0 +1,42 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Interaction: alert, prompt, confirm
+
+the following notebook shows the behaviour and uses behind alert, prompt and confirm
+
+#!markdown
+
+**alert**
+ - used to display a message to the user and waits for them to press OK
+ - the window which the message displays in, is called a ***model window*** - and makes it so all other elements on the page cannot be interacted with until OK is pressed.
+
+#!javascript
+
+alert("Hello");
+
+#!markdown
+
+**Prompt**
+ - used to get input from the user
+ - accepts 2 arguments, a variable name, and an optional parameter (which is used to set the default value of the variable if the input is not valid, or not specified)
+ - while you can use prompt without a default value, its best practice to provide one
+
+#!javascript
+
+let age = prompt("How old are you", 50);
+alert(`Wow! You are ${age} years old!`);
+
+#!markdown
+
+**confirm**
+ - used to display a modal window asking the user to confirm something
+ - returns true if OK is pressed, and false if cancel is pressed 
+
+#!javascript
+
+let question = "continue?"
+let result = confirm(question);

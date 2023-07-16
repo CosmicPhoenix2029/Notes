@@ -1,0 +1,27 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Listing items with NgFor
+
+#!markdown
+
+ - NgFor is an angular directive used to display multiple objects
+ - instead of just displaying single object using interpolation, we use NgFor to iterate through an array of objects and display their properties and values
+ - this is achieved by writing a block of html on how to render a single object (using interpolation), and then using NgFor to esentially specify a foreach loop
+
+#!javascript
+
+//code to render a single object
+<app-housing-location [housingLocation]="housingLocation"></app-housing-location>
+
+//code to iterate through an array of objects and render them
+
+<section class="results">
+<app-housing-location
+*ngFor="let housingLocation of housingLocationList"
+[housingLocation]="housingLocation">
+</app-housing-location>
+</section>

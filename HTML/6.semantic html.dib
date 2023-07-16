@@ -1,0 +1,39 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# semantic HTML
+in html, there are semantic tags that are used to define specific parts of a page (instead of just using divs)
+
+Using proper semantic tags is both better for readability and clarity
+
+#!markdown
+
+**section**
+ - The section tag is used for things that have headers, like chapters, introductions, news items, contact information
+
+**article**
+ - The article tag is used for things that are self contained content, such as forum posts, blog posts, user comments, product cards etc
+
+**header**
+ - The header tag is used as a container for introdutory content, or a set of navigational links
+
+**footer**
+ - The footer tag is used to define a footer for a document and usually contains: copyright info, contact info, back to top links, related documents etc
+
+**nav**
+ - The nav tag is used to define a set of navigational links (ususally as a sidebar or top bar)
+
+**aside**
+ - The aside tag is used to define some content aside the content is it placed in (like a sidebar, you would use aside instead of header)
+
+**figure**
+ - The figure tag is used to specify self contained content like illustations, diagrams, photos etc
+
+**figcaption**
+ - The figcaption tag is used alongside figure, and is used to add a caption to an image
+
+ **blockquote**
+ - used for quoting from other sources

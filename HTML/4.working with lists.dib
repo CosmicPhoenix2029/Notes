@@ -1,0 +1,35 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Working with lists
+
+#!markdown
+
+**unordered lists**
+ - defined using the ul tags
+ - used when the order of a list doesn't matter
+ - Each Item in an unordered list is listed with a bullet point by default
+
+#!html
+
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+
+#!markdown
+
+**ordered lists**
+ - defined using the ol tag
+ - used when the order within a list matters
+ - each list item is displayed using a number format instead of bullet points
+
+#!html
+
+<ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ol>

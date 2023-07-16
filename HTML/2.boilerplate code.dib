@@ -1,0 +1,60 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"languageName":"csharp","name":"csharp"}]}}
+
+#!markdown
+
+# HTML boilerplate
+
+#!markdown
+
+In VSCode, we can auto generate the boilerplate code by pressing ! and then pressing enter on a blank html file
+
+#!markdown
+
+**!DOCTYPE html**
+ - This is the tag that informs the browser that the document to be processed is a html5 document.
+
+#!html
+
+<!DOCTYPE html>
+
+#!markdown
+
+**The HTML tag**
+ - this tag is the root element of the document, meaning all other elements will exist inside this one
+
+#!html
+
+<html lang="en">
+<!--all other content goes here-->
+</html>
+
+#!markdown
+
+**The Head tag**
+ - this tag is a container for meta-information about a page, and items required for things to render correctly, such as linking stylesheets
+ - the "charset" meta element sets the encoding for the page, and is generally set to use "UTF8"
+ - the *title* element is contained within the head and is used to give the page a title (this is displayed on the tab, not the URL) 
+ - The head tag always goes directly under the doctype tag
+ - this is where we will link a CSS file to the HTML document
+
+#!html
+
+<head>
+    <meta charset="UTF-8">
+    <title>Example Title</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+
+#!markdown
+
+**The Body tag**
+ - The body tag is placed below the head tag
+ - This is a container for all displayable content
+
+#!html
+
+<body>
+    <h1>Example large header</h1>
+</body>

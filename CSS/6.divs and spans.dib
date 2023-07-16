@@ -1,0 +1,33 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# divs and spans
+divs and spans are generic boxes used for containing other content
+
+They are used to group related content which can then be moved or styled together
+
+#!markdown
+
+**div**
+ - div elements are *block* elements
+ - used as a container to group other elements 
+ - divs allow us to divide the page into differant blocks and apply styling to those blocks
+
+#!html
+
+<div class="introduction">
+    <h2>Introduction</h2>
+</div>
+
+#!markdown
+
+**span**
+ - span elements are *inline* elements 
+ - used to group text content together, generally should only be used when no other semantic html is available (like nav, main etc)
+
+#!html
+
+<p>an example of <span class="highlight">highlighted text</span></p>

@@ -1,0 +1,26 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# logical operators
+Logical operators are used within JS within comparisions
+
+#!markdown
+
+ - When using logical operators, JS converts each operand into a boolean and then evaulates them
+ - logical operators can be chained
+
+ - **||** OR: - looks for the first true value, if there are none, the expression evaluates to false
+ - **&&** AND: - only returns true if all operands are true
+ - **!** NOT: - returns true if an operand is false
+ - **??** NULLISH: - returns the left hand operand if its not null or undefined, otherwise returns the right hand operand
+
+ - when using ?? with || or &&, you must first define the order of precedence by nesting the || and &&s in parenthesis
+
+#!javascript
+
+let x = (1 && 2) ?? 3; // Works
+
+alert(x); // 2

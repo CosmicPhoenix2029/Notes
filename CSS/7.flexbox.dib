@@ -1,0 +1,65 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Flexbox
+flexbox is a way to arrange items into rows or columns
+These items will grow or shrink based on rules you can define
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox
+
+#!markdown
+
+**flex-containers**
+ - used to contain flex items (which are then dynamically sized within the container)
+ - created by adding "display: flex;" to a css selector 
+ 
+
+#!markdown
+
+**flex-items**
+ - are elements which are nested within a flex-container
+ - flex-items can also be containers (known as nested containers)
+ 
+
+#!markdown
+
+**growing and shrinking**
+ - the growth and shrink behaviour of a flex item is defined via the *flex* property
+ - The flex property is shorthand for *flex-grow*, *flex-shrink* and *flex-basis* (default values are 1, 1, 0)
+ - *flex-grow* controls how big a *flex-item* will be within a container
+ - *flex-shrink* controls how small a *flex-item* will be within a container (only applies when the size of the flex items exceeds the container)
+ - *flex-basis* sets the initial size of a *flex-item*, before it is grown or shrunk based on its containers size. setting this to *auto* makes it check for a defined width and will set it to said width.
+
+#!markdown
+
+**Controlling item orientation with Axes**
+ - controlled with the *flex-direction* property
+ - The default direction is of value *row*, meaning flex-items will be placed side by side, the *flex-basis* uses width for default size
+ - Setting the direction to *column* will make items be placed on top of eachother, the *flex-basis* uses height for default size
+ - using the shorthand *flex: 1;* doesn't work when using column direction, and you must use the syntax *flex: 1, 1, auto* instead, as an empty div will have a height of 0, meaning the initial size of the div would also be 0.
+
+#!markdown
+
+**horizonal alignment**
+ - item alignment along the ***main axis (x)*** across a container, is done via the ***justify-content:*** property
+ - setting the value to ***space-between*** will evently space the items across the container, putting the empty space between the items
+ - setting the value to ***center*** will put the space on the outside of the items (the items are grouped in the middle of the container)
+ - using the value ***flex-start*** will left align items
+ - using the value ***flex-end*** will right align items
+ - using the value ***space-around*** will put the space either side of each item
+ - using the value ***space-evenly*** will evenly space the items within a container
+ - using the property ***gap*** allows you to manually specify the distance between items (done on the container level)
+
+#!markdown
+
+**vertical alignment**
+ - item alignment along the ***cross axis (y)*** of a container, is done via the ***align-items:*** property
+ - setting the value to ***stretch*** will stretch the items to fill the container
+ - setting the value to ***flex-start*** will top-align the items
+ - setting the value to ***flex-end*** will bottom align the items
+ - setting the value to ***center*** will align the items in the vertical middle (this will be at the left of the container on its own)
+ - you can then use ***justify-content*** to place it on the horizontal centre of a container to perfectly centre the item in its container
+ - the ***align-self*** property can be applied to an individual flex-item to move its position without effecting other flex items in the same container

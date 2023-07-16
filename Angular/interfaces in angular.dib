@@ -1,0 +1,69 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Interfaces in Angular
+
+#!markdown
+
+ - Angular uses Typescript to leverage the advantage of working with a strongly-typed language.
+ - Strong type checking reduces the chance of incorrectly formatted data bieng sent between elements or to php scripts
+ - like an interface in c# this defines requirements that an entity which implements it must adhere to (here its the object must contain the datatypes and properties specified in the interface)
+
+#!markdown
+
+**creating an interface**
+ - navigate to the root directory of the app 
+ - enter the command: "ng generate interface interfaceName"
+ - run ng serve and open the app to ensure its buildable and compiles correctly
+ - This will create a file with interfacename.ts with the default code as shown below:
+
+#!javascript
+
+export interface Housinglocation {
+}
+
+#!markdown
+
+**Adding properties to an interface**
+ - open the newly generated interface file 
+ - enter the properties (using the syntax property : datatype;)
+
+#!javascript
+
+export interface HousingLocation {
+    id: number;
+    name: string;
+    city: string;
+    state: string;
+    photo: string;
+    availableUnits: number;
+    wifi: boolean;
+    laundry: boolean;
+  }
+
+#!markdown
+
+**adding sample data to an interface for testing**
+ - open the ts file of the component that will use the interface (normally a form or something that gets user input) in this example this is the home component
+ - import the interface at the top of the file: (import { interfaceName } from 'interfaceLocation';)
+ - within the class export, initlialize an object as follows:
+
+#!javascript
+
+export class HomeComponent {
+    readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
+  
+    housingLocation: HousingLocation = {
+      id: 9999,
+      name: 'Test Home',
+      city: 'Test city',
+      state: 'ST',
+      photo: `${this.baseUrl}/example-house.jpg`,
+      availableUnits: 99,
+      wifi: true,
+      laundry: false,
+    };
+}

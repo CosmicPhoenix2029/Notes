@@ -1,0 +1,56 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Objects
+
+#!markdown
+
+in JS, objects are used to create an "entity" which stores multiple entries. EG a user with a first name, last name etc
+
+#!javascript
+
+let user = {     // an object
+    name: "John",  // by key "name" store value "John"
+    age: 30        // by key "age" store value 30
+  };
+
+  //to get the values from an object:
+  alert(user.name);
+
+  //to delete a property from an object
+  delete user.age;
+
+#!markdown
+
+**multiword properties**
+ - if you were to create a property with a space seperating the words: 
+ - the property must be nested in quotes
+ - to get the property - you must use object["likes birds"]
+
+#!javascript
+
+let user = {
+    name: "John",
+    age: 30,
+    "likes birds": true  // multiword property name must be quoted
+  };
+
+  alert(user["likes birds"]);
+
+#!markdown
+
+**computed properties**
+ - computed properties mean injecting the name of the property is taken from another variable:
+
+#!javascript
+
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"

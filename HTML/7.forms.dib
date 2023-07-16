@@ -1,0 +1,103 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Forms
+
+#!markdown
+
+forms are used to collect user input, which is most often send to a server for processing.
+
+**the Form element**
+ - used to create a HTML form for user input
+ - the form element is a container for differant types of input elements, such as text fields, checkboxes, radio buttons etc
+
+#!html
+
+<form>
+    <!--input elements go here-->
+</form>
+
+#!markdown
+
+**the input element**
+ - used in almost all form elements
+ - can contain differant *types* of input, such as: Text, Radio, Checkbox, submit, button
+
+#!html
+
+<form>
+    <input type="text"> <!--displays a single-line input field for text input-->
+    <input type="radio"><!--displays a radio button for selecting one of many choices-->
+    <input type="checkbox"><!--displays a checkbox for selecting zero or more choices-->
+    <input type="submit"<!--displays a submit button, for submitting the form-->
+    <input type="button"<!--displays a clickable button-->
+</form>
+
+#!markdown
+
+**the label element**
+ - used to define a label for many form elements
+ - is defined by first giving an input an ID, and then "linking the label to the input via the ID"
+
+#!html
+
+<p>Enter your favourite language</p>
+
+<form>
+    <input type="radio" id="html" name="favourite_language" value="HTML">
+    <label for="HTML">HTML</label>
+    <input type="radio" id="css" name="favourite_language" value="CSS">
+    <label for="CSS">CSS</label>
+    <input type="radio" id="javascript" name="favourite_language" value="JavaScript">
+    <label for="javascript">JavaScript</label>
+</form>
+
+#!markdown
+
+**the submit button**
+- used to submit the form to a form-handler (such as a php file)
+- the form-handler is set within the **action** attribute on the form element
+- the submit button is set on an input tag within the form using the type attribute
+
+#!html
+
+<form action="/action_page.php">
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname" value="John"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="lname" value="Doe"><br><br>
+<input type="submit" value="Submit">
+</form>
+
+#!markdown
+
+**form attributes**
+ - ***action***: used to specify the action to be performed when the form is submitted (send to form handling script)
+ - ***target***: used to specify where to display the form submission response that is recived after the form is submitted
+ - the target attribute can have one of the following values:
+ - *_blank*: the response is displayed in a new tab
+ - *_self*: the response is displayed in the current window
+ - *_parent*: the response is displayed in the parent frame
+ - *_top*: the response is displayed in the full body of the window
+ - *framename*: the response is displayed in a named iframe (which is another html document inside the current document)
+ - ***method***: used to specify the http method used to submit the form (get, post, put, delete) etc
+ - ***autocomplete***: an on or off value, used to get the browser to autocomplete form inputs
+ - ***novalidate***: used to specify that no input validation is to be done when the form is submitted
+
+#!markdown
+
+**form elements**
+ - ***input***: used to define inputs within a form
+ - ***label***: used to define a label for several form elements (instead of an empty input, the user can now see a name)
+ - ***select***: used to define a dropdown list (use size attribute to define how many options are displayed, and the multiple attribute to allow multiple selections from the same list)
+ - ***option***: used to add items to a dropdown list
+ - ***textarea***: used to define a multi-line input field, use "rows" and "cols" to define the visible number of lines and the width (this can also be done via CSS)
+ - ***button***: used to define a clickable button
+ - ***fieldset***: used to group related data into a form (like user first name, last name, contact preference)
+ - ***legend***: used to define a caption for a fieldset 
+ - ***datalist***: used to specify a list of predetermined values in a drop down list (like catagories). The list attribute must refer to the id attribute of the parent input element
+ - ***output***: used to display the result of a performed calculation
+ - ***optgroup***: used to group related options into "catagories"

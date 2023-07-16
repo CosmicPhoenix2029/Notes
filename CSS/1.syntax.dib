@@ -1,0 +1,57 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# CSS Syntax
+
+#!markdown
+
+CSS is made up of various rules:
+ - Selectors (the element to apply defined styles to)
+ - properties (the style type to apply)
+ - values (the style value to apply)
+ - if 2 selectors have the same level of specificity, the one closest to the bottom of the file is applied. (the other is overwritten).
+
+#!html
+
+/*selector*/
+div.bold-text{ 
+    //property, and value
+    font-weight: 700; 
+}
+
+#!markdown
+
+**Universal Selectors (selects all elements)**
+
+use * {}
+
+**type selectors (selects all elements of a specified type, E.G. div)**
+
+use div {}
+
+**Class selectors (selects all elements that use the specified class attribute)**
+
+amend the required elements to use the class attribute, then use .class-Name {}
+
+**ID Selectors (used to select elements with a specified ID)**
+
+elements can only have 1 specified ID, specified as an attribute. Use #IdName {}
+
+**grouping selectors**
+
+use the syntax: .example-class, #exampleID {}
+
+**chaining selectors**
+
+use the syntax: .example-class#exampleID {}
+
+#!markdown
+
+**Descenant combinator**
+ - this is the process of selecting a child element, if its parent is of the defined type
+  - EG, only select paragraphs within divs:
+  
+    div p{}

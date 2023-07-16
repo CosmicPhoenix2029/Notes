@@ -1,0 +1,165 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Components overview
+
+When you launch a project in angular, this is controlled via an Angular component named ***AppComponent***
+
+**components**
+- components are the fundamental building blocks of angular applications
+- they display data on the screen, listen for user input and take action based on that input
+- components are stored within the appname/src/app directory
+- the component description includes the components code, the html template and styles (the styles can be described in this file, or in a seperate stylesheet file)
+- new components are added to the app directory.
+
+#!markdown
+
+**Components structure**
+- components have metadata that define its properties, these are added within @components
+- **selector**: This is used to specify how angular refers to the component in templates
+- **standalone**: to describe whether the component requires a ***NgModule***
+- **imports**: an array of dependancies
+- **template**: the components HTML markup and layout
+- **styleUrls**: an array of css files that the component uses
+
+#!javascript
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [],
+  template: `<h1>Hello World!</h1>`,
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  title = 'homes';
+}
+
+#!markdown
+
+**Creating a component**
+ - navigate to the root of the project
+ - run "ng generate component component-name --standalone --inline-template --skip-tests"
+ - run ng serve (to test the app can build and run)
+ - this does the following:
+ - creates a folder with the name of the component
+ - creates an app.component.css and ts file
+ - within the app.component.ts file it will automatically create the code below (adding code based on the switches provided)
+
+#!javascript
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [],
+  template: `<h1>Hello World!</h1>`,
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  title = 'homes';
+}
+
+#!markdown
+
+**Adding a component to the apps layout**
+ - This is acheived by adding an import statement at the top of the apps root component (the ones not contained in a folder)
+ - We then update the imports array within the @components section
+
+#!javascript
+
+import { Component } from '@angular/core';
+import { HomeComponent } from './home/home.component'; //component is initialized here
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    HomeComponent, //component is added to the imports here, we are adding the component as a dependancy
+  ],
+  template: `<h1>Hello World!</h1>`,
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  title = 'homes';
+}
+
+#!markdown
+
+**Adding markup to a component**
+ - the syntax below shows the required way to add html markup to a component (in this example, its the root component)
+
+#!javascript
+
+template: `
+<main>
+  <header class="brand-name">
+    <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
+  </header>
+  <section class="content">
+    <app-home></app-home>
+  </section>
+</main>
+`,
+
+#!markdown
+
+**adding features to components**
+ - In order to add features to components, you update the markup specified within the components template
+ - you then need to style the component via its css file
+ - this example will add a search filter and a button to the home component (with no functionality yet)
+
+#!javascript
+
+template: `
+  <section>
+    <form>
+      <input type="text" placeholder="Filter by city">
+      <button class="primary" type="button">Search</button>
+    </form>
+  </section>
+`,
+
+#!markdown
+
+**Referring to components**
+ - If you need to add a component to a specific place within a parent component, perform the following:
+ - add the components to the import statement at the top
+ - add the component to the imports array
+ - Within the template html, you can add an element which "inserts" the imported component into the template markup
+
+#!javascript
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HousingLocationComponent } from '../housing-location/housing-location.component';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HousingLocationComponent,
+  ],
+  template: `
+  <section>
+    <form>
+      <input type="text" placeholder="Filter by city">
+      <button class="primary" type="button">Search</button>
+    </form>
+  </section>
+  <section class="results">
+    <app-housing-location></app-housing-location> //here we are inserting a component into the home component
+  </section>
+  `,
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent {
+
+}

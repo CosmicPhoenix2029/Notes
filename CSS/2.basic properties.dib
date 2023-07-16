@@ -1,0 +1,56 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# Basic properties
+
+#!markdown
+
+**color and background-color**
+ - the color property sets an elements text colour
+ - the background-color sets the elements background colour
+ - both properties can accept the value types: a keyword (eg red), RGB, HEX, or HSL
+ - for HSL and RSB the alpha property can also be used to increase or decrease its transparency
+
+#!html
+
+p {
+    color: #1100FF; /*Hexadecimal*/
+    color: rgba(100, 0, 127, 0.3);
+    color: red;
+    color: hsla(120, 100%, 50%, 0.2); /*hue, saturation, lightness, alpha*/
+}
+
+#!markdown
+
+**font-family, font-weight, font-size and text-align**
+ - font-family is used to define the font for an element
+ - it's best practice to include a list of preferred fonts, in case a browser cannot find the first font
+ - font-weight determines the boldness of the text, and values can either be a keyword such as bold, or a number between 1 and 1000
+ - font-size determines how big or small the text is, and is measured in pixel size (like in word) 
+ - text-align is used to define where the text should be placed within an element, such as to the left, centre, right, top or bottom.
+
+#!html
+
+p {
+    font-family: "calibri";
+    font-size: 14px;
+    font-weight: 700; /*This is equivalent to bold*/
+    text-align: center;
+}
+
+#!markdown
+
+**image height and width**
+ - used to define the size of an image
+ - by default, the image size will be the same as the images dimensions 
+ - its best practice to set the height to auto, and then customize the width, in order to preserve the images aspect ratio 
+
+#!html
+
+img {
+    height: auto;
+    width: 500px;
+}

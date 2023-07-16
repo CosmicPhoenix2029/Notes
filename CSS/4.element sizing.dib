@@ -1,0 +1,60 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# The box model (element sizing and positioning)
+
+#!markdown
+
+**what is the box model**
+ - every element on a page is a rectangular box
+ - these boxes can contain other boxes in them
+ - the boxes can sit alongside eachother 
+ - when checking box size and alignment, it can help to make all of the elements borders a solid colour, such as red
+
+#!html
+
+* {
+    border: 2px solid red;
+  }
+
+#!markdown
+
+**How to manipulate the size of boxes**
+ - *padding* is used to increase the space between the border of a box and the content within it
+ - *margin* is used to increase the space between boxes
+ - *border* is used to add space between the padding and margin
+
+#!markdown
+
+**margin**
+ - margins are set using lengths (px), percentages or auto
+ - margins can have negative values (used to pull elements closer together)
+ - the auto property tells the browser to set the margin value automatically, this normally results in 0. 
+ - margins are set in the order, top, left, bottom, right
+ - shorthand syntax can be used to the top and bottom, and then left and right 
+
+#!html
+
+h2 {
+    margin: 10px, 20px; /*top and bottom are 10, L and R are 20*/
+}
+
+#!markdown
+
+**collapsing margins**
+ - vertical margins on differant elements that touch each other, meaning there is no content, padding or borders seperating them will *collapse*
+ - lets say we have a h2 and a p element, the h2 has a margin of 20px and the p element has top margin of 10px
+ - it could be assumed, that the vertical margin thickness from the bottom of h2 and top of 9 would be 30.
+ - however, as the margin collapses, the actual vertical margin thickness is 20px (margins collapse into the highest value in a collapse event). 
+
+#!markdown
+
+**padding**
+ - padding values are set using lengths or percentages and cannot accept negative values
+ - the shorthand for margins (TLBR) is used for padding also
+ - When setting padding values, be sure to account for the margins and border widths!
+ - to work around needing to calculate width, use the box-sizing: border-box property
+ - it is best practice to globally set box-sizing: border-box on all elements via * to ensure consistancy

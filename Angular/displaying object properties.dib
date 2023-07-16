@@ -1,0 +1,34 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# displaying object properties and values within a component via interpolation
+
+#!markdown
+
+ - interpolation in this context is used to display an objects properties values within a component
+ - This is achieved by by using {{object.property}} syntax within a html element, which is contained within a components template
+
+#!markdown
+
+**adding interpolated values**
+ - open the components ts file which you wish to add the interpolated value to
+ - within the template markup, add a html element to contain the interpolated value, and then within the element, add the interpolated value.
+ - this follows the syntax as shown below
+
+#!javascript
+
+template: `
+<section class="listing">
+  <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
+  <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+  <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.city }}, {{ housingLocation.state }}</p>
+</section>
+`,
+
+#!markdown
+
+ - here, we have bound the housingLocation's photo property to the images src attribute
+ - we have also used interpolation to render the values within the images alt property, and within the h2 and p elements

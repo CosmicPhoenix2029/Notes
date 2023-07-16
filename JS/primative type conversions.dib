@@ -1,0 +1,50 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# converting between primative types
+
+#!markdown
+
+**string conversion**
+ - to explicitly cast a variable to a string, use the syntax: String(variableName);
+ 
+
+#!javascript
+
+let example = 1;
+Alert(example); //outputs 1 which is of type number
+
+example String(example);
+Alert(example); //outputs "1" which is of type string
+
+#!markdown
+
+**numeric conversion**
+ - to Explicitly cast a variable to type number use the syntax: Number(variableName);
+ - This converts types automatically when performing maths operations, such as "5" / "2";
+ - if you try to cast an invalid number, such as "test" - the varible will be set to ***NaN***
+
+#!javascript
+
+let numOne = "20";
+let numTwo = "5";
+alert(numOne / numTwo); //this will output 5 and is automatically converted to type number
+
+#!markdown
+
+**boolean conversion**
+- occurs automatically within ***logical operations*** - such as if(varName != null){};
+- can be explicitly cast using: Boolean(varName);
+- values such as the number 0, null, undefined and Nan become ***false***
+- other values become ***true***
+
+#!javascript
+
+let num = 5;
+if(num <= 5)
+{
+ //if the "if" is true, this code block will run   
+}

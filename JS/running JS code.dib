@@ -1,0 +1,44 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Running JS code
+
+#!markdown
+
+For basic scripts, we can embed the script into script into a HTML document using the script element:
+
+#!html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    console.log("Hello, World!")
+  </script>
+</body>
+</html>
+
+#!markdown
+
+For complex scripts, we can link a .js file within a script element:
+
+#!html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+  <script> src="javascript.js"</script>
+</body>
+</html>

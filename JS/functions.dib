@@ -1,0 +1,66 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Functions
+ - functions are used to execute a block of code when invoked by its name 
+ - functions can take parameters which are "passed" to it while bieng invoked
+ - unlike other languages where you need to use "using:", JS can access "outside" variables
+
+#!javascript
+
+let a = 5;
+let b = 10;
+let name = "Haydn";
+
+//function definition
+function sumOf(a, b){
+    let num = a + b;
+    let message = `Hello ${name}! Your requested result is: ${num}`
+    return message;
+}
+
+//invoking a function with parameters and using its response
+alert(sumOf(a, b));
+
+#!markdown
+
+**default values (optional parameters)**
+ - when a parameter is not defined, you can assign a default value to it as follows:
+
+#!javascript
+
+//function definition
+function sumOf(a = 5, b = 10){
+    let num = a + b;
+    let message = `Hello ${name}! Your requested result is: ${num}`
+    return message;
+}
+
+//invoking a function with parameters and using its response
+alert(sumOf(a, b));
+
+#!markdown
+
+**expression functions**
+ - its basically the same syntax as lambda expressions
+ - the syntax is function name => *a return value*
+ - can be used for multi line functions too, as shown below
+
+#!javascript
+
+//single line
+let sayHi = () => alert("Hello!");
+sayHi();
+
+//multi-line:
+let age = prompt("What is your age?", 18);
+
+let sum = (a, b) => {  // the curly brace opens a multiline function
+    let result = a + b;
+    return result; // if we use curly braces, then we need an explicit "return"
+  };
+  
+  alert( sum(1, 2) ); // 3

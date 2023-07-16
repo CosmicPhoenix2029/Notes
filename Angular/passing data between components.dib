@@ -1,0 +1,37 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# passing data between components
+
+#!markdown
+
+**property bindings are used to pass dynamic data to components**
+ - this enables us to be able you connect a variable to an Input within an angular template
+ - the data is then dynamically bound to the Input
+ - in the example below, we want "homes" objects to be passed from the Home Component, to the HousingLocation Component
+
+#!markdown
+
+**adding a property binding to the parent component**
+ - open the ts file of the parent component (in this case its the home component)
+ - property bindings are added within the html code in the template property of the component
+ - As below this is added within the element app-housing-location 
+ - so here we have, the **app-housing-location** component nested inside the **home** component, and we are passing the data entered within the **app-housing-location** component, to the **housingLocation** interface
+
+#!javascript
+
+//this is the template within the home component
+template: `
+<section>
+  <form>
+    <input type="text" placeholder="Filter by city">
+    <button class="primary" type="button">Search</button>
+  </form>
+</section>
+<section class="results">
+  <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
+</section>
+`,

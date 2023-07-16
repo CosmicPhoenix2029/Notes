@@ -1,0 +1,52 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# adding inputs to components
+
+#!markdown
+
+ - inputs allow components to share data 
+ - The direction of the data sharing is from the parent component to the child component
+
+#!markdown
+
+**How to add inputs to components**
+- navigate to the components .ts file which you want to add the input to
+- locate the import which imports from @angular/core
+- within the input objects part {} add the input as below:
+
+#!javascript
+
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HousingLocation } from '../housinglocation';
+
+#!markdown
+
+ - Then, within the same components class export, we then need to add the input property
+ - this is acheived by using the "@Input" decorator
+ - the input decorator is then followed by an instantiation of the desired object (in this case it will be the housingLocation object, of which we declare that it implements the HousingLocation iterface (to ensure all of the properties requirements are fulfilled))
+ - Within this instantiation, we use the ! (not null) operator to declare that the input is expecting the value to be passed in and will not be null
+
+#!javascript
+
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HousingLocation } from '../housinglocation'; //importing the interface
+@Component({
+  selector: 'app-housing-location',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <p>
+      housing-location works!
+    </p>
+  `,
+  styleUrls: ['./housing-location.component.css']
+})
+export class HousingLocationComponent {
+  @Input() housingLocation!: HousingLocation; //adding the input to the component
+}

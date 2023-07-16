@@ -1,0 +1,243 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Routing in Angular
+
+#!markdown
+
+ - Routing is the ability to navigate from one component to another
+ - in single page apps, only parts of the page are updated to represent the requested view for the user
+ - The ***angular router*** enables you to declare routes and specify which components should be displayed on the screen if that route is requested by the application
+ - in the example below, I will enable routing to navigate to the details page
+
+#!markdown
+
+**enabling routing for an app**
+ - create a new file in the root directory called "routes.ts"
+ - within main.ts, add the imports for provideRouter and RouteConfig
+ - this will import the required provideRouter function, but also will import the routes specified in the routes file during build and startup
+
+#!markdown
+
+***update main.ts***
+
+#!javascript
+
+//inside main.ts
+import { bootstrapApplication,provideProtractorTestingSupport } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router'; //adding the router provider
+import routeConfig from './app/routes'; //adding the routeconfig from the routes.ts file
+bootstrapApplication(AppComponent,
+    {
+      providers: [
+        provideProtractorTestingSupport(),
+        provideRouter(routeConfig) //adding the routes to the providers array
+      ]
+    }
+  )
+  .catch(err => console.error(err));
+
+#!markdown
+
+***update app.component.ts***
+ - first we need to add the import for routerModule
+ - then we add this to the imports property of the app component
+ - then, we replace the app-home element with a router-outlet element
+ - here we also add a link back to the home page (notice below the anchor element is containing the header, this makes the whole header clickable, and will return you back to the home page)
+
+#!javascript
+
+//import at the top
+import { RouterModule } from '@angular/router';
+
+//adding that to the imports property
+imports: [
+    HomeComponent,
+    RouterModule,
+  ],
+
+//updating the HTML tag and adding a back to home link
+template: `
+<main>
+  <a [routerLink]="['/']">
+    <header class="brand-name">
+      <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
+    </header>
+  </a>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>
+`,
+
+#!markdown
+
+# defining routes to components
+
+#!markdown
+
+ - routes are added to the routes.ts file
+ - first we must ensure the Routes type is imported
+ - we then must ensure that each component we add a route to is imported
+
+#!javascript
+
+//in routes.ts
+
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
+
+#!markdown
+
+ - then we define a immutable variable of type Routes
+ - the ***Routes*** type is an object with 3 properties: **path**, **component** and **title**
+ - **path** is the route to the component (a relative link, URL or a dynamic link as shown below)
+ - **component** is the component name
+ - **title** is the page title displayed on the tab
+
+#!javascript
+
+//in routes.ts
+const routeConfig: Routes = [
+    {
+      path: '',
+      component: HomeComponent,
+      title: 'Home page'
+    },
+    {
+      path: 'details/:id',
+      component: DetailsComponent,
+      title: 'Home details'
+    }
+  ];
+  
+  export default routeConfig;
+
+#!markdown
+
+**Route parameters**
+ - route parameters are a method used to dynamically update a route based on an objects property
+ - in this example, we want the details page to display the unique data of each house object
+ - in order to acheive this, we need to use route parameters in the form of the Id property of a HousingLocation object
+ - to do this, we specified **'details/:id'** within the details route (defined in routes.ts)
+ - the **:id** part is dynamic and will change based on how the route is requested by the code
+
+#!markdown
+
+**updating a component to use a dynamic route**
+ - in this example, I will update the details page to "build" the route and request it within an anchor tag
+ - this is achieved by making use of the [router-link] attribute, then specifying the url as shown below
+ - we must also import RouterLink and RouterOutput from @angular/Router at the top and within the imports array for this to work
+
+#!javascript
+
+//within the housing location component
+
+//adding the required imports 
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+//the updated imports array
+imports: [
+    CommonModule,
+    RouterLink,
+    RouterOutlet,
+  ],
+
+//updating the template to add the dynamic routing link
+template: `
+  <section class="listing">
+    <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
+    <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+    <p class="listing-location">{{ housingLocation.city}}, {{housingLocation.state }}</p>
+    <a [routerLink]="['/details', housingLocation.id]">Learn More</a> //here is the bit which requests the route using the id
+  </section>
+`,
+
+#!markdown
+
+**fetching the route parameters**
+ - this is the process of obtaining the route parameter from one component (housing-location) into another (details)
+ - first add the required imports in the dynamic component (details)
+ - then, in the class definition, the following actions need to be performed:
+ - give the component access to the ***ActivatedRoute*** router feature (allows it to have access to the data about the current route)
+ - define a local variable to store the dynamic route value
+ - define a constructor to set the local variable to the value of the current dynamic route
+
+#!javascript
+
+//in details.component.ts
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { HousingService } from '../housing.service';
+import { HousingLocation } from '../housingLocation';
+
+//in the template:
+template: `<p>details works! {{ housingLocationId }}</p>`,
+
+//in the class definition:
+export class DetailsComponent {
+    route: ActivatedRoute = inject(ActivatedRoute);
+    housingLocationId = -1;
+    constructor() {
+        this.housingLocationId = Number(this.route.snapshot.params['id']);
+    }
+}
+
+#!markdown
+
+**customizing a component to display values from an object**
+ - when accessing data from an object, ensure the type is declared nullable with the ? operator (shown in example below)
+ - otherwise the app will crash as null isnt defined
+ - we need to add a ***call*** to the service within the constructor in order to retrieve the data from another component
+- we also need to add the references to other components inside the class definition
+
+#!markdown
+
+updating the template:
+
+#!javascript
+
+template: `
+<article>
+  <img class="listing-photo" [src]="housingLocation?.photo"
+    alt="Exterior photo of {{housingLocation?.name}}"/>
+  <section class="listing-description">
+    <h2 class="listing-heading">{{housingLocation?.name}}</h2>
+    <p class="listing-location">{{housingLocation?.city}}, {{housingLocation?.state}}</p>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">About this housing location</h2>
+    <ul>
+      <li>Units available: {{housingLocation?.availableUnits}}</li>
+      <li>Does this location have wifi: {{housingLocation?.wifi}}</li>
+      <li>Does this location have laundry: {{housingLocation?.laundry}}</li>
+    </ul>
+  </section>
+</article>
+`,
+
+#!markdown
+
+ - creating a local variable to store the housing Location object
+ - granting access to the service via Dependancy injection
+ - getting the objects id by querying the activated routes parameters
+ - using a service function to retrive an object and store it in the local variable
+
+#!javascript
+
+export class DetailsComponent {
+    route: ActivatedRoute = inject(ActivatedRoute);
+    housingService = inject(HousingService); //using DI to access the housing service
+    housingLocation: HousingLocation | undefined; //declaring a local instance of housingLocation. (sets the value to either an instance of  HousingLocation, or undefined)
+    constructor() {
+        const housingLocationId = Number(this.route.snapshot.params['id']);
+        this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    }
+  }
+  

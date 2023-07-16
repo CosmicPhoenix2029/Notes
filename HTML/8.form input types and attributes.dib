@@ -1,0 +1,63 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# input types
+
+#!markdown
+
+ Input types are declared within an input element via the "type" attribute
+ - **button**: defines a button (whos actions can be customised as required (such as update asset button))
+ - **checkbox**: defines a checkbox (where zero or more options can be selected (like test task on RFC))
+ - **color**: defines a field that should contain a colour, depending on the browser, a colour picker can be added here
+ - **date**: defines a date field (the min and max values can be used here to restrict the date range)
+ - **datetime-local**: defines a date-time field (a date picker would be best here (think planned/booked in work))
+ - **email**: defines an email field (can be automatically validated on submission)
+ - **file**: defined a file field (and adds a browse button for file uploads)
+ - **hidden**: defines a hidden field which users can't see, and is used to upload data such as the DB record identifier (ID)
+ - **image**: defines an image field 
+ - **month**: defines a month field
+ - **number**: defines a numeric input field
+ - **password**: defines a password field (which hides characters as they are entered)
+ - **radio**: defines a radio button (where only 1 value can be selected)
+ - **range**: defines a field which accepts numbers between a range, specified with min and max attributes
+ - **reset**: defines a reset button to clear all form data entered
+ - **search**: defines a search field, whoch behaves like a single-line text field
+ - **submit**: defines a button for submitting form data
+ - **tel**: defines a phone number field (use pattern attribute to specify a regex pattern to match for validation)
+ - **text**: defines a single-line text input
+ - **time**: allows a the user to select a time (use a time picker for this field)
+ - **url**: allows the user to enter a url 
+ - **week**: allows the user to select a week and year
+
+#!markdown
+
+# attributes
+
+#!markdown
+
+ - **value**: specifies an initial value for an input field
+ - **readonly**: specifies that an input field is readonly (the user can see it but not change it)
+ - **disabled**: specifies that a field is disabled and un-clickable (data in this field is not submitted)
+ - **size**: specifies the visible width, in characters of an input field (default is 20 characters)
+ - **maxlength**: specifies the maximum number of characters allowed in a field (JS must be used to alert the user to this)
+ - **multiple**: user is allowed to enter multiple values in an input field
+ - **pattern**: used to specify regex patterns to validate the input entered
+ - **placeholder**: specifies a short hint that describes the expected value (displayed in the input field before the user enters data)
+ - **required**: specifies that the input field must be entered before the form can be submitted
+ - **autofocus**: this field will get the focus when the page loads
+ - **height and width**: specifies the height and width of the input field 
+ - **min and max**: specifies the minimum value and maximum value of an inputs field (works with number, range, date, datetime-local, month time and week)
+ - **list**: refers to a datalist element (which is selected using the input fields ID)
+ - **autocomplete**: whether to autofill the form data or not
+
+ **form attributes**:
+ - **form**: specifies the form which the input belongs to (specified via the form ID)
+ - **formaction**: specifies the url of the file that will process the specific input fields data (like selecting an asset number)
+ - **formenctype**: specifies the encoding used when submitting the form (only for POST methods)
+ - **formmethod**: specifies the HTTP request method used when submitting the form (overrides the one specified on the form element)
+ - **formtarget**: specifies a name/keyword that indicates where to display the response after the form is submitted, this overrides that which is specified on the form element (and only works on images and submit inputs)
+ - **formnovalidate**: specifies not to validate the input on this specific input field (overrides that specified on the form element)
+ 

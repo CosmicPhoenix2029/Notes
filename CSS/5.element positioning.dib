@@ -1,0 +1,20 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"html","items":[{"aliases":[],"languageName":"html","name":"html"}]}}
+
+#!markdown
+
+# The box model - Element positioning
+
+#!markdown
+
+Element positioning is controlled via the display property, which controls the type of box an element is
+ - **block**: the boxes are stacked on top of each other, each starting on a new line
+ - **inline**: the boxes are positioned horizontally next to each other
+ - **inline-block**: the boxes are positioned horizontally, but with block style padding and margins (more often its better to use flexbox)
+
+#!html
+
+h2{
+    display: block;
+}

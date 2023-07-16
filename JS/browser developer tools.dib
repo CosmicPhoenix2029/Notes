@@ -1,0 +1,23 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# JS developer tools
+
+#!markdown
+
+The browser dev tools are used to perform the following actions:
+ - change screen size of a site
+ - view and edit the document object model (DOM)
+ - use breakpoints
+ - view and edit HTML elements
+ - view the resources panel to check scripts running on a site
+ - add CSS pseudostate to a class
+ - view CSS properties
+ - view and edit the BOX model of any element
+ - enable or disable CSS classes
+ - simulate media 
+ 
+ https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/overview

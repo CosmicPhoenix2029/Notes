@@ -1,0 +1,83 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# fetching data via an HTTP and an API
+ - this notebook covers how to fetch JSON data from a server
+ - this is acheved in 3 steps:
+ - **1: configure the JSON server**
+ - **2: update the service to fetch the data from the server**
+ - **3: update components to use asyncronous calls to the service** 
+
+#!markdown
+
+**1: configure the JSON server**
+ - install JSON server using ***npm install -g json-server***
+ - in the root of the project create a file called ***db.json***
+ - add the data which was in the service.ts HousingLocationList array into db.json
+ - test the configuration by running ***json-server --watch db.json*** and then browse to http://localhost:3000/locations
+ - you should then see the JSON data on the webpage
+
+#!markdown
+
+**2: update the service to fetch the data from the json server**
+ - in the service.ts file, remove the manually created items array
+ - add a string property which contains the JSON servers URL (as configured in step 1)
+ - update the methods to make a call to the web server instead of using a now non-existant array
+
+#!javascript
+
+//new asyncronous methods
+
+//retrieve all house objects in json.db
+async getAllHousingLocations(): Promise<HousingLocation[]> {
+  const data = await fetch(this.url);
+  return await data.json() ?? [];
+}
+
+//get only houses that have the id passed to it in the functions parameter
+async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
+    const data = await fetch(`${this.url}/${id}`);
+    return await data.json() ?? {};
+  }
+
+#!markdown
+
+**3: update components to use asyncronous calls to the service**
+ - any components that previously replied on the local array, will now need to be amended to use asyncronous calls to the service
+ - in this case, this is the home and details components
+
+#!markdown
+
+previous code whch was inside each components constructor:
+
+#!javascript
+
+//home
+this.housingLocationList = this.housingService.getAllHousingLocations();
+//populate the filtered list using the services 
+this.filteredLocationList = this.housingLocationList;
+
+//details
+const housingLocationId = Number(this.route.snapshot.params['id']);
+this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+
+#!markdown
+
+new code: (goes inside the contstructor still)
+
+#!javascript
+
+//home 
+this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+    this.housingLocationList = housingLocationList;
+    this.filteredLocationList = housingLocationList;
+  });
+
+//details
+const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+this.housingService.getHousingLocationById(housingLocationId).then(housingLocation => {
+  this.housingLocation = housingLocation;
+});

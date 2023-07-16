@@ -1,0 +1,41 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# dynamic css classes
+
+ - in angular, you can add and remove a CSS class dynamically based on specified criteria
+ - this is done on the element in the html markup: [class.selected]="item === selectedItem"
+ - this will make it so that the selector "class.selected" only applies to the currently selected item
+
+#!javascript
+
+<li *ngFor="let hero of heroes">
+  <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)"> //this line
+    <span class="badge">{{hero.id}}</span>
+    <span class="name">{{hero.name}}</span>
+  </button>
+</li>
+
+#!markdown
+
+relevant css classes:
+
+#!javascript
+
+.heroes button.selected {
+    background-color: black;
+    color: white;
+  }
+  
+  .heroes button.selected:hover {
+    background-color: #505050;
+    color: white;
+  }
+  
+  .heroes button.selected:active {
+    background-color: black;
+    color: white;
+  }
