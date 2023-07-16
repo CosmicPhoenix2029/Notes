@@ -1,0 +1,87 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# loops
+
+ - loops are to repeat a set of actions, until the defined condition returns false
+ - in JS, there are the following loop types:
+ - **while**
+ - **do...while**
+ - **for**
+ - **for..in (used to iterate over objects)**
+ - **for...of (used to iterate over arrays)**
+
+#!markdown
+
+**while**
+ - used to iterate while a defined condition returns true
+ - will never run if the condition is always evaluated to false
+
+#!javascript
+
+while( condition ) {
+    //execute code block while the condition is true
+}
+
+#!markdown
+
+**do..while**
+ - used to iterate while a defined condition returns true, but will always run once before checking the condition
+
+#!javascript
+
+do {
+    // loop body
+  } while (condition);
+
+#!markdown
+
+**for**
+ - used to iterate a specified number of times using the syntax (begin; condition; step)
+
+#!javascript
+
+for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+    alert(i);
+  }
+
+#!markdown
+
+**for..in**
+ - used to iterate through each of the items inside an object
+ - this is like a foreach for objects
+
+#!javascript
+
+let user = {
+    name: "John",
+    age: 30,
+    isAdmin: true
+  };
+  
+  for (let key in user) {
+    // keys
+    alert( key );  // name, age, isAdmin
+    // values for the keys
+    alert( user[key] ); // John, 30, true
+  }
+
+#!markdown
+
+**for..of**
+ - used to iterate through each item in an array
+ - this loop type doesn't give access to the number of items in the array, 
+ - this loops over all properties, not just the numeric ones
+ - for of is much faster than for..in - therefore better for use with arrays
+
+#!javascript
+
+let fruits = ["Apple", "Orange", "Plum"];
+
+// iterates over array elements
+for (let fruit of fruits) {
+  alert( fruit );
+}
