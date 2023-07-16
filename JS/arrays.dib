@@ -1,0 +1,49 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Arrays
+
+ - an array in Javascript is simply a collection of items (strings, numbers and other things like objects)
+ - an array can contain differant types within the same array 
+
+#!markdown
+
+**creating an array**
+ - to declare an array we use one of the 2 options listed below:
+ - using []
+ - using the ***new*** keyword
+
+#!javascript
+
+const cars = ["john", "doe", 46];
+
+#!markdown
+
+**Accessing array data**
+ - arrays use an index to access its elements 
+ - to access the last element in an array use the length property - 1
+
+#!javascript
+
+const cars = ["john", "doe", 46];
+const firstName = cars[0];
+
+#!markdown
+
+**array properties and methods**
+ - a major part of using arrays is using its properties and methods
+ - an example of an array property is using .length (note as its not a method, there is no () at the end)
+ - an example of an array method is the .sort() method (this sorts the array alphanumerically )
+ - a full list of array methods can be found here: https://www.w3schools.com/js/js_array_methods.asp
+
+#!javascript
+
+const cars = ["john", "doe", 46];
+cars.push("anotherValue");
+cars.sort();
+for(let i in cars){
+    console.log(cars[i]);
+}
