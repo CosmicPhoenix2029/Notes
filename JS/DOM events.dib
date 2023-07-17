@@ -1,0 +1,54 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# DOM events
+ - DOM events are used to provide the logic to dynamically, update DOM nodes
+ - There are 3 ways to achieve this (options 1 and 2 can only set 1 function property per type (E.G. 1 onClick property)):
+ - **1: specify function attributes directly on HTML elements** (E.G: onClick="alert('Hello;)") --this gets messy
+ - **2: select the element by its id, then define the function attribute in a javascript file** 
+ - **3: select the element by its id, then add an event listener to handle the function**
+
+#!markdown
+
+ - a full list of DOM events is listed here: https://www.w3schools.com/jsref/dom_obj_event.asp
+
+#!markdown
+
+**1: specify function attributes directly on HTML elements**
+
+#!html
+
+<button onClick="alert('Hello')">Click Me</button>
+
+#!markdown
+
+**2: select the element by its id, then define the function attribute in a javascript file** 
+
+#!html
+
+<button id="btn">Click Me</button>
+
+#!javascript
+
+const btn = document.querySelector('#btn');
+btn.onClick = () => alert('Hello');
+
+#!markdown
+
+**3: select the element by its id, then add an event listener to handle the function**
+
+#!html
+
+<button id="btn">Click Me</button>
+
+#!javascript
+
+const btn = document.querySelector('#btn');
+btn.addEventListener(
+    'click', () => {
+        alert('hello');
+    }
+)
