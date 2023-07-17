@@ -33,6 +33,7 @@
 
 #!javascript
 
+//note the use of arrow functions to be cleaner
 const btn = document.querySelector('#btn');
 btn.onClick = () => alert('Hello');
 
