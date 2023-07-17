@@ -1,0 +1,153 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Document object Model (DOM) manipulation
+
+ - The document object model is a tree-like representation of the contents of a webpage
+ - This is best thought as, as a tree of "nodes" in which depending on the HTML structure, will have subnodes etc also
+
+#!markdown
+
+**Targeting nodes with selectors**
+ - You can select specific nodes by using one of the following options inside of the document.querySelector() method:
+ - CSS styling selectors ('div.display')
+ -Relational selectors ('container.firstElementChild'), container is fetched via a CSS selector first
+
+#!javascript
+
+//CSS style selector method:
+const displayDiv = document.querySelector('div.display');
+
+//relational selectors:
+const container = document.querySelector('#container');
+console.log('container.firstElementChild');
+
+#!markdown
+
+**DOM Methods:**
+ - There are various methods used when manipulatong the DOM:
+ - **Query Selectors** (used to get nodes within the DOM)
+ - **Element Creation** (used to create nodes, this doesn't add it to the page, just creates in memory)
+ - **Append elements** (used to insert nodes into a page at a specified point)
+ - **Remove elements** (used to remove a child nodes from a parent, and return a reference to th child)
+ - **Altering elements** (used to manipulate a nodes, such as adding CSS styling to it, changing its CSS class etc)
+ - **editing attributes** (used to add, remove or edit a nodes attributes, such as an elements id, or a link src)
+ - **working with classes** (used to add, remove or toggle an elements class)
+ - **adding text content** (used to add text to a node)
+ - **adding HTML content** (used to add HTML content inside a node)
+
+#!markdown
+
+**Query selectors**
+ - There are 2 methods to retrive nodes from a DOM:
+ - **element.querySelector(selector)** (gets the reference to the first match of the specified selector)
+ - **element.querySelectorAll(selectors)** (returns a nodeList containing all references to the specified selectors)
+
+#!javascript
+
+const singleDiv = div.querySelector('#divID');
+const allFlexContainers = element.querySelectorAll('.flex-container');
+
+#!markdown
+
+**Element Creation**
+ - used to create a new element in memory (does not insert it into a node)
+ - uses the createElement method of class document
+
+#!javascript
+
+const div = document.createElement('div');
+//now we would then style the element and add html etc to it before using append or insert to put it inside a node
+
+#!markdown
+
+**Appending elements**
+ - used to add elements to a specified node
+ - there are 2 methods of note here:
+ - parentNode.appendChild(childNode) //adds the child node as the last child of parentNode
+ - parentNode.insertBefore(newNode, referenceNode) //adds the child node before the specified referenceNode
+
+#!javascript
+
+const parentNode = div.querySelector('#parentDiv');
+const referenceNode = parentNode.firstElementChild;
+const newNode = document.createElement('div');
+
+//now insert the child node above the other child nodes
+parentNode.insertBefore(newNode, referenceNode);
+
+#!markdown
+
+**Removing elements**
+ - first get the parent node of the element to remove
+ - then get the specific child node you wish to remove
+ - then remove the element using "parentNode.removeChild(child)"
+
+#!javascript
+
+const parentNode = article.querySelector('#articleID .');
+const removeThisElement = parentNode.querySelector('li.child1'); //selects the list item with class 'child1;
+
+//now remove the element from the parent node
+parentNode.removeChild(removeThisElement);
+
+#!markdown
+
+**alerting elements**
+ - when you have a reference to an element, you can use the reference to alter the elements properties, like its CSS class etc
+
+#!javascript
+
+//change the background colour of a selected list item
+const nodeToEdit = document.querySelector(li.selected);
+nodeToEdit.style.background = '#3cb371'; //add a single attribute
+nodeToEdit.setAttribute('style', 'color: white;', 'background: dark-grey;'); //add multiple attributes
+
+#!markdown
+
+**editing attributes**
+ - used to get, set or remove attributes from a referenced node
+
+#!javascript
+
+const elementToEdit = document.querySelector('#ID');
+const currentId = elementToEdit.getAttribute('id');
+elementToEdit.setAttribute('id', 'flex-item'); //take the attribute type, and value as args
+elementToEdit.removeAttribute('id'); //removes the ID from the node
+
+#!markdown
+
+**working with classes**
+ - uses a node reference.classList to add, toggle or remove classes
+
+#!javascript
+
+const specificNode = document.querySelector('#Id');
+specificNode.classList.add('hidden');
+specificNode.classList.remove('hidden');
+specificNode.classList.toggle('selected');
+
+#!markdown
+
+**Adding text content**
+ - used to add text to an element as below:
+
+#!javascript
+
+const specificNode = document.querySelector('#Id');
+
+specificNode.textContent = `Welcome, ${user.name}`
+
+#!markdown
+
+**Adding HTML content**
+ - used to add html content inside the specified node
+ - innerHTML should be used sparingly, as this can present security risks (via HTML injection)
+
+#!javascript
+
+const specificNode = document.querySelector('#Id');
+specificNode.innerHTMl = `<span> tickets assigned to ${user.name}</span>`;
