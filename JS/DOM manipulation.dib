@@ -8,6 +8,7 @@
 
  - The document object model is a tree-like representation of the contents of a webpage
  - This is best thought as, as a tree of "nodes" in which depending on the HTML structure, will have subnodes etc also
+ - **Note: use <script src="script.js" defer></script>** to wait for DOM to load
 
 #!markdown
 
