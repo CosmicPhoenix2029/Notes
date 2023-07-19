@@ -81,3 +81,151 @@ submitApplication(){
         //<button type="submit" class="primary">Apply now</button>
       </form>
     </section>
+
+#!markdown
+
+# Building a form
+
+Below are the required steps to building an angular template driven form:
+ - define a data model (the types and data which are expected)
+ - define the form layout, and any required arrays of values for drop down menus
+ - import the required modules in the AppComponent
+ - bind the forms input elements to data values or events
+ - track form states
+ - track control states
+ - create visual feedback for states
+ - show and hide validation messages
+ - implement form submission
+ - respond to form submission
+ 
+
+#!markdown
+
+**define a data model**
+ - create a new class file in the src directory (rick click the folder, select new file and call it classname.ts)
+ - create a class definition with a constructor, creating the data model as below: 
+
+#!javascript
+
+export class ticket {
+    constructor(
+        public contact: string,
+        public contactEmail: string,                       
+    ) { }
+}
+
+#!markdown
+
+**define the form layout**
+ - the selector is set to 'app-appName-form', which means it can also be nested within a parent component via the components html element tags
+ - navigate to the src directory in the terminal
+ - run: "ng generate component componentName"
+ - within the .ts file of the new component, import the datamodel (E.G: import { ticket } from 'src/ticket';)
+ - within the class definition, add any required values which are used in the form as below:
+
+#!javascript
+
+export class TicketFormComponent {
+  
+    submitted = false;
+    onSubmit() { this.submitted = true; }
+  
+    contactPreference = ['phone', 'email', 'MS Teams'];
+  
+    model = new ticket(
+      'example User', 
+      'example.email@example.com',
+      this.contactPreference[1]
+    );
+}
+
+#!markdown
+
+**add the required imports to the app module.ts**
+ - import FormsModule
+ - import the Forms component
+ - add the forms module to the modules imports array
+ - add the forms component to the declarations array
+
+#!javascript
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { TicketFormComponent } from 'src/ticket-form/ticket-form.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    TicketFormComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+#!markdown
+
+**add the forms html and css**
+ - within the form component, add the required html and css to add and style the form as required:
+ - below is a basic example of the html for an input element and a drop down menu
+
+#!html
+
+<div class="container">
+    <h1>Submit a Ticket</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="contactPreference">Hero Power</label>
+            <select class="form-control" id="contactPreference" required>
+              <option *ngFor="let preference of contactPreference" [value]="preference">{{preference}}</option>
+            </select>
+          </div>
+    </form>
+</div>
+
+#!markdown
+
+**bind input controls to data properties**
+ - in the same html file (the form component)
+ - we can use the ngModel directive (comes with FormsModule) to bind inputs to the defined model (in the tickets class in this case)
+ - in order to do this, on each input, follow the syntax below:
+ - the [(ngModel)] part is the bit which obtains the user's input
+
+#!html
+
+<div class="form-group">
+<label for="contact">Contact</label>
+<input type="text" class="form-control" id="contact" 
+required
+[(ngModel)]="model.contact" name="contact">
+</div>
+
+<div class="form-group">
+<label for="contactPreference">contact preference</label>
+<select class="form-control" id="contactPreference" required>
+    <option *ngFor="let contactPreference of contactPreferences" [value]="contactPreference">{{contactPreference}}</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="description">description</label>
+<textarea class="form-control" id="description" 
+required
+[(ngModel)]="model.description" name="description" rows="5" cols="33"></textarea>
+</div>
+
+#!markdown
+
+**accessing the overall form status**
+ - 
